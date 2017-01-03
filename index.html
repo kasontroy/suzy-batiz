@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head><script type="text/javascript">var connection = new WebSocket('ws://localhost:62183');connection.onmessage = function (e) {location.reload(); };</script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -55,10 +55,16 @@
       	border-collapse: collapse;
       	border-spacing: 0;
       }
+      button {
+        background: 0;
+        border: 0;
+        cursor: pointer;
+      }
       /* Custom */
       html {
         font-size: 16px;
         height: 100%;
+        overflow: hidden;
       }
       /*@media (max-width: 900px) {
         html { font-size: 15px; }
@@ -77,7 +83,7 @@
 
       }
       body{
-        background-color: #000;
+        background-color: #FFFFFF;
         background-image: url('background.jpg');
         background-repeat: no-repeat;
         background-size: 270%;
@@ -121,10 +127,16 @@
       h1{
         text-shadow: 0 0 .4em #000, 0 0 0.25em #000;
         font-family: 'Cormorant', serif;
-        font-size: 7.5em;
+        font-size: 6.25em;
         z-index: 5;
         line-height: .7em;
+        margin-bottom: .25em;
       }
+      /*@media screen and (min-width: 32em) {
+        h1{
+          font-size: 7.5em;
+        }
+      }*/
       @media screen and (min-width: 33em) {
         h1{
           font-size: 8em;
@@ -133,7 +145,7 @@
       h2{
         text-shadow: 0 0 .4em #000, 0 0 0.25em #000;
         font-family: 'Cormorant', serif;
-        font-size: 3.5em;
+        font-size: 2.5em;
         z-index: 10;
         margin-bottom: .25em;
       }
@@ -143,10 +155,7 @@
         }
       }
       a{
-        text-shadow: 0 0 .8em #000,0 0 .8em #000,0 0 .8em #000,0 0 .8em #000,0 0 .8em #000, 0 0 0.25em #000, 0 0 0.1em #000,0 0 .8em #000,0 0 .8em #000,0 0 .8em #000,0 0 .8em #000,0 0 .8em #000, 0 0 0.25em #000, 0 0 0.1em #000;
         font-family: 'Gotham', serif;
-        font-size: 1.75em;
-        z-index: 15;
         text-decoration: none;
         border-bottom: 1px solid #fff;
       }
@@ -154,6 +163,13 @@
         margin-top: 2em;
         margin-left: 5%;
         margin-right: 5%;
+      }
+      .nav-link{
+        text-shadow: 0 0 .8em #000,0 0 .8em #000,0 0 .8em #000,0 0 .8em #000,0 0 .8em #000, 0 0 0.25em #000, 0 0 0.1em #000,0 0 .8em #000,0 0 .8em #000,0 0 .8em #000,0 0 .8em #000,0 0 .8em #000, 0 0 0.25em #000, 0 0 0.1em #000;
+        font-size: 1.75em;
+        z-index: 15;
+        display: inline-block;
+        margin-right: .75em;
       }
       @media screen and (min-width: 28em) {
         .content{
@@ -167,13 +183,106 @@
         }
       }
 
+      .about{
+        position: absolute;
+        overflow: hidden;
+        top: 100%;
+        max-height: 0;
+        z-index: 300;
+        background-color: rgba(0,0,0,.9);
+        padding: 0 1.5em;
+        left:0;
+      }
+
+      .about p {
+        color: #FFF;
+        font-family: 'Gotham', serif;
+        line-height: 1.5em;
+        margin-bottom: .75em;
+      }
+      .about.is-active{
+        top:0;
+        overflow: scroll;
+        max-height: 100%;
+        padding: 1.5em;
+        bottom: 0;
+      }
+
+      @media screen and (min-width: 56em) {
+        .about.is-active{
+          padding-top: 5em;
+          margin-left: 50%;
+          margin-right: 0;
+        }
+      }
+
+      @media screen and (min-width: 60em) {
+        .about.is-active{
+          margin-left: 45%;
+          margin-right: 10%;
+        }
+      }
+      .close-about{
+        position:absolute;
+        width: 4em;
+        height: 4em;
+        display: block;
+        top: 2em;
+        right: 1em;;
+        z-index: 500;
+      }
+      .close-about img{
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
     </style>
   </head>
   <body>
     <div class="content">
       <h1>Suzy<br> Batiz</h1>
-      <h2>Stay Tuned</h2>
-      <p><a href="mailto:press@poopourri.com">Press Contact Link</a></p>
+      <p><a class="nav-link" id="about-button" href="#about">About</a> <a class="nav-link" href="mailto:press@poopourri.com">Press</a></p>
+      <div id="about" class="about">
+        <h2>About Suzy</h2>
+        <p>Empower. Engage. Magnetize. These are just a few of the words that entrepreneur, author, and professional motivator Suzy Bátiz loves to use when describing what makes a successful business. That’s because they’re actionable and inspiring, two qualities she herself embodies as a businesswoman, and hopes to inspire in others.</p>
+        <p>Best known as the founder and creator of the wildly successful enterprise Poo~Pourri, now worth $300 million and available in over 100 countries, Suzy is the model of how to effectively use entrepreneurial intuition to turn a small idea into something creative and revolutionary. </p>
+        <p>Back in 2006, she took her love of (and expertise in) aromatherapy and natural essential oils to develop an innovative toilet spray that creates a protective barrier on the water’s surface, trapping odors below. All of her Poo~Pourri products are also eco-friendly, using naturally derived compounds, so even her business practices are mindful and earth conscious. And using only her unconventional marketing acumen and creativity, she turned that $25,000 startup into a global, multi-million dollar brand and household name. </p>
+        <p>Originality and business moxie aside, what separates Suzy from the rest of the startup business pack is her unique emphasis on entrepreneurial intuition. Suzy believes in being a fierce mama for what you love and sees her business as a living, breathing organism that she needs to raise and look after much as she would a child. She’s always asking: (1) Does this idea want to be born? And (2) Is this idea one that seems to have a will–even a consciousness–that can be nurtured and supported to grow into its ideal form? It’s a process she calls radical resonance, and it starts with embodying authenticity and using the body as a tuning fork to take actionable steps in determining whether or not to proceed with the idea.</p>
+        <p>“I don’t need the success to be happy, so I am fearless in a way that most people can’t be in business. I used to see success as life and death. It is hard to make decisions from that place. Business for me now is more play than work. It’s amazing how much fun you can have when you’re free to defy, liberate and transform. It also happens to be surprisingly successful,” she says.</p>
+        <p>Along with running Poo~Pourri, Suzy also devotes her time to helping others realize their potential in business and life through speaking engagements and coaching. She is also writing a book, forthcoming in 2017. </p>
+        <p>Interested in booking her for a speaking engagement or business coaching? <a href="mailto:rebekah@poopourri.com">Click here</a></p>
+        <button id="close-about" class="close-about"><img src="x-small.svg"></button>
+      </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+      $(function(){
+        var $aboutButton = $('#about-button'),
+          $aboutClose = $('#close-about'),
+          $about = $('#about'),
+          hideAbout = function(){
+            window.location.hash = '';
+            $about.removeClass('is-active');
+          },
+          showAbout = function(){
+            window.location.hash = 'about';
+            $about.addClass('is-active');
+          }
+          aboutClick = function(e){
+            e.preventDefault();
+            if ($about.hasClass('is-active')){
+              hideAbout();
+            } else {
+              showAbout();
+            }
+          };
+        if (window.location.hash === '#about'){
+          showAbout();
+        }
+        $aboutButton.click(aboutClick);
+        $aboutClose.click(hideAbout);
+      });
+    </script>
   </body>
 </html>
